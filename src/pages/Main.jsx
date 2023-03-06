@@ -15,6 +15,7 @@ import ServerLeftSidebar from '../components/main-components/ServerLeftSidebar';
 import ServerMessages from '../components/main-components/ServerMessages';
 import UsersSidebar from '../components/main-components/UsersSidebar';
 import Nav from '../components/main-components/Nav';
+import { Helmet } from 'react-helmet';
 
 export default function Main() {
   useEffect(() => {
@@ -385,6 +386,10 @@ export default function Main() {
 
           <div className='h-full flex flex-col'>
 
+            <Helmet>
+              <title>Discord | Friends</title>
+            </Helmet>
+
             <Nav 
               activeDiv={'friends'}
               setActiveFriendsSection={setActiveFriendsSection}
@@ -452,6 +457,10 @@ export default function Main() {
           myName={myName}
           myPfp={myPfp}
         />
+
+        <Helmet>
+          <title>Discord | Server</title>
+        </Helmet>
 
         <main className='max-h-screen relative'>
           <Nav 

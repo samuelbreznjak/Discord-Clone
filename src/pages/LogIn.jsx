@@ -7,9 +7,18 @@ import LoginScreen from '../components/login-components/LoginScreen';
 import RegisterScreen from '../components/login-components/RegisterScreen';
 import TooYoung from '../components/login-components/TooYoung';
 import LoadingDiv from '../components/login-components/LoadingDiv';
+import { Helmet } from 'react-helmet';
 
 export default function LogIn() {
   const navigate = useNavigate();
+
+  let [resetPassword, setResetPassword] = useState(false)
+  let [activeDiv, setActiveDiv] = useState('loading')
+
+  let [logInputValues, setLogInputValues] = useState({
+    email: '',
+    pw: ''
+  })
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -21,16 +30,11 @@ export default function LogIn() {
     }); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  let [resetPassword, setResetPassword] = useState(false)
-  let [activeDiv, setActiveDiv] = useState('loading')
-
-  let [logInputValues, setLogInputValues] = useState({
-    email: '',
-    pw: ''
-  })
-
   return (
     <>
+        <Helmet>
+          <title>Discord | Your Place to Talk and Hang Out</title>
+        </Helmet>
         <ResetPassword
             show={resetPassword} 
             email={logInputValues.email}
