@@ -4,7 +4,13 @@ import { getStorage } from "firebase/storage"
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  // your config
+  apiKey: "AIzaSyDkhkyIwRnzRImxqsnySuqQyjoN0Npoy60",
+  authDomain: "chatapp-rct.firebaseapp.com",
+  projectId: "chatapp-rct",
+  storageBucket: "chatapp-rct.appspot.com",
+  messagingSenderId: "163853019670",
+  appId: "1:163853019670:web:a8df4a15a7e4e18153a337",
+  measurementId: "G-06NQ6DJ79R"
 };
 
 // Initialize Firebase

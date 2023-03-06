@@ -44,7 +44,6 @@ export default function Main() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // const dummy = useRef();
   const navigate = useNavigate();
 
   const [activeNavButton, setActiveNavButton] = useState('dm')
@@ -368,7 +367,7 @@ export default function Main() {
 
       {activeDiv === 'dm' ?
 
-      <div className='grid grid-cols-dm'>
+      <div className='grid grid-cols-dm m850:grid-cols-dm-responsive m500:grid-cols-1'>
         <DmLeftSidebar
           handleDmButton={handleDmButton}
           activeDmButton={activeDmButton}
@@ -446,7 +445,7 @@ export default function Main() {
 
       : activeDiv === 'server' ? 
 
-      <div className='grid grid-cols-dm'>
+      <div className='grid grid-cols-dm m850:grid-cols-dm-responsive m550:grid-cols-1'>
         <ServerLeftSidebar
           activeChannelName={activeChannelName}
           handleChannelButton={handleChannelButton}
@@ -462,7 +461,7 @@ export default function Main() {
             activeChannelName={activeChannelName}
           />
 
-          <div className={toggleServerMemberList ? 'h-[calc(100vh-49px)] grid grid-cols-server' : 'h-[calc(100%-49px)] block'}>
+          <div className={toggleServerMemberList ? 'h-[calc(100vh-49px)] grid grid-cols-server m1000:grid-cols-server-responsive' : 'h-[calc(100%-49px)] block'}>
 
             <ServerMessages
               activeChannelName={activeChannelName}

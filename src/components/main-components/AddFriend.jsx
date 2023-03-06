@@ -62,7 +62,7 @@ if(userSnap.exists()) {
 
   return (
     <div className='h-full'>
-        <div className='px-[30px] py-[19px] border-b border-gray-7'>
+        <div className='px-[30px] m600:px-[20px] py-[19px] border-b border-gray-7'>
             <h2 className='text-white font-semibold leading-5 mb-2'>ADD FRIEND</h2>
 
             <form onSubmit={handleSendRequestSubmit} autoComplete="off">
@@ -71,7 +71,7 @@ if(userSnap.exists()) {
                 <div className='flex-auto mr-4 py-1'>
                 <input onChange={handleSendRequestInput} onFocus={() => {handleSendRequestDivBorder('focus')}} onBlur={() => {handleSendRequestDivBorder('blur')}} className='outline-none w-full bg-transparent h-10 font-medium tracking-[0.04em] border-0 text-overlay-text leading-5 placeholder-gray-8' maxLength="37" autoComplete="off" placeholder="Enter a Username" type="text" />
                 </div>
-                <button onClick={handleSendRequestSubmit} className={activeSendRequestButton ? 'hover:bg-button-hover transition-all opacity-100 cursor-pointer w-auto min-w-[60px] h-8 min-h-[32px] flex justify-center items-center text-white font-medium text-sm px-4 py-0.5 rounded-secondary bg-button-initial' : 'opacity-50 cursor-not-allowed w-auto min-w-[60px] h-8 min-h-[32px] flex justify-center items-center text-white font-medium text-sm px-4 py-0.5 rounded-secondary bg-button-initial'} type="submit" disabled={!activeSendRequestButton}>Send Friend Request</button>
+                <button onClick={handleSendRequestSubmit} className={activeSendRequestButton ? 'hover:bg-button-hover transition-all opacity-100 cursor-pointer w-auto min-w-[60px] h-8 min-h-[32px] flex justify-center items-center text-white font-medium text-sm px-4 py-0.5 rounded-secondary bg-button-initial' : 'opacity-50 cursor-not-allowed w-auto min-w-[60px] h-8 min-h-[32px] flex justify-center items-center text-white font-medium text-sm px-4 py-0.5 rounded-secondary bg-button-initial'} type="submit" disabled={!activeSendRequestButton}>Send</button>
             </div>
             <p style={{ color: `${sendRequestDivBorderColor}` }} className='text-sm leading-5 mt-2'>
                 {sendRequestDivBorderColor === '#f38688' ? 
@@ -89,8 +89,8 @@ if(userSnap.exists()) {
             </form>
         </div>
         <div className='flex flex-col justify-center items-center h-[calc(100%-161px)]'>
-            <img className='mb-10' src={`${all}`} alt="" />
-            <div className='text-gray-3 leading-5'>Wumpus is waiting on friends. You don’t have to though!</div>
+            <img className='mb-10 m900:w-[260px] m900:mb-7 m600:hidden' src={`${all}`} alt="" />
+            <div className='text-gray-3 text-center mx-2 leading-5'>Wumpus is waiting on friends. You don’t have to though!</div>
         </div>
     </div>
   )

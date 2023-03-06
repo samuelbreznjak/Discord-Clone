@@ -7,11 +7,11 @@ let handleData = (e) => {
 }
 
   return (
-    <button type='button' onClick={() => {setDateDropdown(!dateDropdown)}} onBlur={() => {setDateDropdown(false)}} className="bg-black rounded-secondary flex justify-between items-center pl-[11px] pr-2 relative">
+    <button type='button' onClick={() => {setDateDropdown(!dateDropdown)}} onBlur={() => {setDateDropdown(false)}} className="bg-black rounded-secondary regform:text-sm flex justify-between items-center pl-[11px] pr-2 relative">
         <div className={`dropdownscrollbar overflow-y-scroll border border-black absolute w-full bottom-[40px] max-h-[215px] min-h-[215px] bg-gray-4 left-0 ${dateDropdown ? 'block' : 'hidden'}`}>
             {dates.map(d => {
                 return(
-                    <div onClick={handleData} key={crypto.randomUUID()} className="dropdown-btn">{d}</div>
+                    <div onClick={handleData} key={crypto.randomUUID()} className="dropdown-btn regform:text-xs">{d}</div>
                 )
             })} 
         </div>

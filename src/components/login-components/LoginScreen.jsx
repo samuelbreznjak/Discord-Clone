@@ -93,7 +93,7 @@ let handleLogSubmit = async (e) => {
 }
 
 return (
-    <div className={activeDiv === 'log' ? "w-[480px] h-[408px] rounded-main bg-main-gray text-white p-8 active" : "w-[464px] h-[408px] rounded-main bg-main-gray text-white p-8"}>
+    <div className={activeDiv === 'log' ? "w-[480px] regform:px-4 min-h-[408px] rounded-main bg-main-gray text-white p-8 active" : "w-[464px] h-[408px] rounded-main bg-main-gray text-white p-8"}>
         <form onSubmit={handleLogSubmit}>
             <div>
                 <h1 className="font-semibold text-2xl text-center mb-2 leading-[30px]">Welcome back!</h1>

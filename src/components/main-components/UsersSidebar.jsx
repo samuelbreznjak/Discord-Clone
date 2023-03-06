@@ -38,7 +38,7 @@ setUserButton(!userButton)
 }
 
   return (
-    <div className={toggleServerMemberList ? 'bg-gray-4 relative min-h-[calc(100vh-49px)] max-h-[calc(100vh-49px)]' : 'hidden'}>
+    <div className={toggleServerMemberList ? 'bg-gray-4 relative min-h-[calc(100vh-49px)] max-h-[calc(100vh-49px)] m750:hidden' : 'hidden'}>
         <div className='overflow-y-scroll dropdownscrollbar pb-6 h-full'>
             <h3 className='text-gray-13 font-semibold text-xs p-siderbar tracking-[0.02em] mb-px'>
                 MEMBERS — {allUsers.length}
@@ -63,13 +63,13 @@ setUserButton(!userButton)
                 }
 
                 return(
-                    <button data-username={username} onClick={e => {handleUserButton(e, thisIndex)}} key={crypto.randomUUID()} className='ml-2 userbtn btn px-2 h-[42px] flex items-center rounded hover:bg-gray-5 group min-w-[224px] cursor-pointer'>
+                    <button data-username={username} onClick={e => {handleUserButton(e, thisIndex)}} key={crypto.randomUUID()} className='ml-2 userbtn btn px-2 h-[42px] flex items-center rounded hover:bg-gray-5 group min-w-[224px] m1000:min-w-[130px] m1000:max-w-[130px] text-ellipsis overflow-hidden whitespace-nowrap cursor-pointer'>
                         <div data-username={username} key={crypto.randomUUID()} style={{ backgroundImage: `url(${item.photoURL === 'default' ? defaultpfp : item.photoURL})` }} className='w-8 h-8 userbtn btn rounded-full bg-center bg-cover mr-3 userbtndiv'></div>
-                        <div data-username={username} key={crypto.randomUUID()} className='whitespace-nowrap btn overflow-ellipsis overflow-hidden userbtn userbtndiv'>
+                        <div data-username={username} key={crypto.randomUUID()} className='whitespace-nowrap btn max-w-[70px] overflow-ellipsis overflow-hidden userbtn userbtndiv'>
                             <p data-username={username} key={crypto.randomUUID()} className='font-semibold btn text-base text-gray-13 group-hover:text-overlay-text userbtn userbtnp'>{item.displayName}</p>
                         </div>
 
-                        <div style={{ top: `${userButtonTopPosition}`, bottom: `${userButtonBottomPosition}`}}  className={userButton && activeUserButtonId === thisIndex ? 'text-white absolute top-0 h-20 flex-col flex right-[246px] w-max text-sm font-medium bg-black p-2 z-20 rounded-md' : 'hidden'}>
+                        <div style={{ top: `${userButtonTopPosition}`, bottom: `${userButtonBottomPosition}`}}  className={userButton && activeUserButtonId === thisIndex ? 'text-white absolute top-0 h-20 flex-col flex right-[246px] m1000:right-[156px] w-max text-sm font-medium bg-black p-2 z-20 rounded-md' : 'hidden'}>
                             <div onClick={(e) => {handleProfileButton(e, btnText, username)}} className='rounded-secondary text-left hover:bg-blue px-3 py-1.5'>{btnText}</div>
                             <div onClick={() => {handleSendMessageButton(username)}} className='rounded-secondary text-left hover:bg-blue px-3 py-1.5'>Send message</div>
                         </div>

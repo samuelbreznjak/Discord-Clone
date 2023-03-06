@@ -3,8 +3,11 @@ import defaultpfp from '../../media/img/defaultpfp.png'
 import User from './User'
 import { db } from '../../firebase';
 import { arrayRemove, doc, updateDoc } from "firebase/firestore";
+import useMatchMedia from 'react-use-match-media';
 
 export default function DmLeftSidebar({ handleDmButton, activeDmButton, allChats, allUsers, myName, myPfp, setActiveDmButton, setActiveDmDiv }) {
+
+const isSidebarSmall = useMatchMedia('(max-width: 850px)');
 
 let closeConversationButton = async (username) => {
     await updateDoc(doc(db, "users", `${myName}`), {
@@ -16,9 +19,9 @@ let closeConversationButton = async (username) => {
 }
 
   return (
-    <div className='bg-gray-4 relative max-h-screen'>
+    <div className='bg-gray-4 relative max-h-screen m500:hidden'>
         <div className='flex items-center font-semibold text-base px-4 py-3 text-white border-b border-black h-[49px]'>
-            <p>Direct messages</p>
+            <p>{isSidebarSmall ? 'DM' : 'Direct Messages'}</p>
         </div>
 
         <div className='flex flex-col h-[calc(100vh-49px)]'>
@@ -28,7 +31,7 @@ let closeConversationButton = async (username) => {
                     Friends
                 </button>
 
-                <h2 className='text-xs font-semibold text-gray-3 p-dm-heading tracking-[.02em]'>DIRECT MESSAGES</h2>
+                <h2 className='text-xs font-semibold text-gray-3 p-dm-heading tracking-[.02em] uppercase'>{isSidebarSmall ? 'DM' : 'Direct Messages'}</h2>
 
                 {allChats.map(item => {
                 let photoURL = allUsers.find(user => user.displayName === item).photoURL
@@ -36,7 +39,7 @@ let closeConversationButton = async (username) => {
                 return(
                     <div key={crypto.randomUUID()} className={activeDmButton === `${item}` ? 'text-white bg-gray-7 group flex items-center font-medium h-[42px] w-full rounded mb-1' : 'group hover:text-white hover:bg-gray-5 text-gray-3 flex items-center mb-1 font-medium h-[42px] w-full rounded'}>
                         <button onClick={() => {handleDmButton(`${item}`)}} key={crypto.randomUUID()} className='flex h-full pl-2 items-center flex-auto'>
-                            <div key={crypto.randomUUID()} style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})`}} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
+                            <div key={crypto.randomUUID()} style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})`}} className='w-8 h-8 rounded-full m850:hidden bg-center bg-cover mr-3'></div>
                             <p key={crypto.randomUUID()} className='font-medium'>{item}</p>
                         </button>
                         <button onClick={() => {closeConversationButton(item)}} key={crypto.randomUUID()} className='pr-2'>

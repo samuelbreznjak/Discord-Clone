@@ -178,7 +178,7 @@ let handleRegSubmit = async (e) => {
 }
 
 return (
-    <div className={activeDiv === 'reg' ? "w-[480px] h-[610px] rounded-main bg-main-gray text-white p-8 active" : "w-[480px] h-[610px] rounded-main bg-main-gray text-white p-8"}>
+    <div className={activeDiv === 'reg' ? "w-[480px] regform:px-4 min-h-[610px] rounded-main bg-main-gray text-white p-8 active" : "w-[480px] h-[610px] rounded-main bg-main-gray text-white p-8"}>
         <form onSubmit={handleRegSubmit}>
             <h1 className="font-semibold text-2xl text-center mb-2 leading-[30px]">Create an account</h1>
             <div className="mt-5">
@@ -196,7 +196,7 @@ return (
                         <span className='text-red pl-1'>{regErrors.date ? '- Date is invalid' : ''}</span>
                     </label>
                     
-                    <div className="text-base w-full h-10 grid gap-2.5 grid-cols-dropdowns">
+                    <div className="text-base w-full h-10 grid gap-2.5 regform:gap-1 grid-cols-dropdowns">
                         <DateDropdownBtn
                             setDateDropdown={setMonthDropdown}
                             setDate={setMonth}
@@ -231,8 +231,8 @@ return (
                         </div>
                     </div>
                     
-                    <div className="text-xs">
-                        <p onClick={() => {setToggleCheckbox(!toggleCheckbox)}} className="inline cursor-pointer pl-[9px] text-overlay-text">I have read and agree to Discord's </p>
+                    <div className="text-xs pl-[9px]">
+                        <p onClick={() => {setToggleCheckbox(!toggleCheckbox)}} className="inline cursor-pointer text-overlay-text">I have read and agree to Discord's </p>
                         <a className="text-link inline hover:underline" href="//discord.com/terms" rel="noreferrer noopener" target="_blank">Terms of Service</a>
                         <p onClick={() => {setToggleCheckbox(!toggleCheckbox)}} className="inline cursor-pointer text-overlay-text"> and </p>
                         <a className="text-link inline hover:underline" href="//discord.com/privacy" rel="noreferrer noopener" target="_blank">Privacy Policy</a>

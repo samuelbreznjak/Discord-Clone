@@ -4,7 +4,7 @@ import illustration from '../../media/img/13.png'
 export default function TooYoung({ activeDiv, setActiveDiv }) {
 
   return (
-    <div className={activeDiv === 'too young' ? "w-[480px] h-[395px] rounded-main bg-main-gray text-white p-8 active" : "w-[480px] h-[395px] rounded-main bg-main-gray text-white p-8"}>
+    <div className={activeDiv === 'too young' ? "w-[480px] regform:px-4 min-h-[395px] rounded-main bg-main-gray text-white p-8 active" : "w-[480px] h-[395px] rounded-main bg-main-gray text-white p-8"}>
         <img className='mx-auto mb-5' src={illustration} alt="13" />
 
         <h1 className="font-semibold text-2xl text-center mb-2 mt-[23px] leading-[30px]">Unable to register</h1>

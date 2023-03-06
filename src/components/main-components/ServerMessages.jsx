@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import defaultpfp from '../../media/img/defaultpfp.png'
 import { auth, db } from '../../firebase'
 import { addDoc, collection } from 'firebase/firestore'
+import useMatchMedia from 'react-use-match-media';
 
 export default function ServerMessages({ activeChannelName, activeChannelMessages, allUsers, myName, setActiveMessageButtonId, serverInputValue, setServerInputValue, messageButton, setMessageButton, hideMessageButton, activeMessageButtonId, initialPendingRequests, intitialAllFriends, handleProfileButton, handleSendMessageButton }) {
 
 const dummy = useRef()
+const isViewportSmall = useMatchMedia('(max-width: 450px)');
 
 useEffect(() => {
     dummy.current.scrollIntoView();
@@ -21,27 +23,28 @@ let rect = e.target.getBoundingClientRect();
 
 if(btn === 'pfp'){
     if(e.target.parentElement.nextElementSibling.children[0].children[0].innerText === myName){
-    return
+        return
     }
 
     setMessageButtonXPosition('55px')
+
     if((window.innerHeight - rect.top) < 150){
-    let diff = 146 - (window.innerHeight - rect.top)
-    setMessageButtonYPosition(`-${diff}px`)
+        let diff = 146 - (window.innerHeight - rect.top)
+        setMessageButtonYPosition(`-${diff}px`)
     }else{
-    setMessageButtonYPosition('0px')
+        setMessageButtonYPosition('0px')
     }
 
 }else{
     if(e.target.innerText === myName){
-    return
+        return
     }
 
     if((window.innerHeight - rect.top) < 150){
-    let diff = 150 - (window.innerHeight - rect.top)
-    setMessageButtonYPosition(`-${diff}px`)
+        let diff = 150 - (window.innerHeight - rect.top)
+        setMessageButtonYPosition(`-${diff}px`)
     }else{
-    setMessageButtonYPosition('0px')
+        setMessageButtonYPosition('0px')
     }
 
     let buttonLeft = e.target.offsetWidth + 63
@@ -57,7 +60,7 @@ let sendServerMessage = async (e) => {
     e.preventDefault()
 
     if(serverInputValue.trim() === ''){
-    return
+        return
     }
 
     const { displayName } = auth.currentUser;
@@ -147,37 +150,37 @@ let sendServerMessage = async (e) => {
                 return(
                     <div key={crypto.randomUUID()}>
                     {newDay ? 
-                    <div key={crypto.randomUUID()} className='flex justify-center text-xs font-semibold text-gray-14 relative px-4 mt-[17px]'>
+                    <div key={crypto.randomUUID()} className='flex justify-center text-xs font-semibold text-gray-14 relative m400:px-2 px-4 mt-[17px]'>
                         <p key={crypto.randomUUID()} className='z-10 px-2 py-px bg-main-gray'>{newDayDateFormat}</p>
                         <div key={crypto.randomUUID()} className='w-[calc(100%-32px)] bg-gray-10 h-px absolute top-2'></div>
                     </div> 
                     : null}
 
                     {isSameSender && !newDay ? 
-                    <div key={crypto.randomUUID()} className='px-4 py-1 hover:bg-gray-11 group'>
-                        <div key={crypto.randomUUID()} className='grid grid-cols-message gap-4'>
+                    <div key={crypto.randomUUID()} className='px-4 m400:px-2 py-1 hover:bg-gray-11 group'>
+                        <div key={crypto.randomUUID()} className='grid grid-cols-message m400:gap-2 gap-4'>
                             <div key={crypto.randomUUID()}>
-                                <div key={crypto.randomUUID()} className="text-center text-gray-14 text-[11px] font-medium tracking-tighter flex items-center justify-center">
+                                <div key={crypto.randomUUID()} className="text-center text-gray-14 m400:text-[10px] text-[11px] font-medium tracking-tighter flex items-center justify-center">
                                 <p className='leading-[22px] hidden group-hover:inline'>{formattedTime}</p>
                                 </div>
                             </div>
                             <div key={crypto.randomUUID()} className='flex flex-col'>
-                                <p key={crypto.randomUUID()} className='leading-[22px]'>{message.text}</p>
+                                <p key={crypto.randomUUID()} className='leading-[22px] break-words'>{message.text}</p>
                             </div>
                         </div>
                     </div>
                     :
-                    <div key={crypto.randomUUID()} className='px-4 mt-[17px] py-1 hover:bg-gray-11'>
-                        <div key={crypto.randomUUID()} className='grid grid-cols-message gap-4 relative'>
+                    <div key={crypto.randomUUID()} className='px-4 m400:px-2 mt-[17px] py-1 hover:bg-gray-11'>
+                        <div key={crypto.randomUUID()} className='grid grid-cols-message m400:gap-2 gap-4 relative'>
                             <button onClick={e => {handleMessageButton(e, 'pfp', thisIndex)}} onBlur={hideMessageButton} key={crypto.randomUUID()} className='pt-1 btn msgbtn h-max'>
                                 <div key={crypto.randomUUID()} style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})` }} className='bg-center msgbtn btn bg-cover h-10 rounded-full'></div>
                             </button>
                             <div key={crypto.randomUUID()} className='flex flex-col min-h-[44px]'>
                                 <div className='flex items-center'>
-                                <button onClick={e => {handleMessageButton(e, 'username', thisIndex)}} onBlur={hideMessageButton} key={crypto.randomUUID()} className='btn msgbtn font-medium leading-[22px] mr-1.5 text-white w-min hover:underline'>{message.displayName}</button>
-                                <p className='font-medium text-xs text-gray-14 leading-[22px]'>{firstMessageDate}</p>
+                                <button disabled={isViewportSmall} onClick={e => {handleMessageButton(e, 'username', thisIndex)}} onBlur={hideMessageButton} key={crypto.randomUUID()} className='btn msgbtn font-medium leading-[22px] mr-1.5 text-white w-min m400:text-sm hover:underline'>{message.displayName}</button>
+                                <p className='font-medium text-xs text-gray-14 m400:text-[10px] leading-[22px]'>{firstMessageDate}</p>
                                 </div>
-                                <p key={crypto.randomUUID()} className='leading-[22px]'>{message.text}</p>
+                                <p key={crypto.randomUUID()} className='leading-[22px] break-words'>{message.text}</p>
                             </div>
 
                             <div style={{ left: `${messageButtonXPosition}`, top: `${messageButtonYPosition}`}} className={messageButton && activeMessageButtonId === thisIndex ? 'absolute flex-col flex w-max text-sm font-medium bg-black p-2 z-20 rounded-md' : 'hidden'}>

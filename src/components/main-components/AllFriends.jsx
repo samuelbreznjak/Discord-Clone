@@ -33,13 +33,13 @@ let clearSearch = () => {
     <div className='h-full'>
         {intitialAllFriends.length === 0 ? 
             <div className='h-full flex flex-col justify-center items-center'>
-                <img className='mb-12' src={`${all}`} alt="wumpus" />
-                <p className='text-gray-3'>Wumpus is waiting on friends. You don’t have to though!</p>
+                <img className='mb-12 m900:w-[260px] m900:mb-6 m600:hidden' src={`${all}`} alt="wumpus" />
+                <p className='text-gray-3 text-center mx-2'>Wumpus is waiting on friends. You don’t have to though!</p>
                 <button onClick={() => {setActiveFriendsSection('add friend')}} className='mt-5 bg-button-initial text-white font-medium text-sm rounded-secondary py-[9px] px-4 transition-all hover:bg-button-hover ease-linear' type='button'>Add Friend</button>
             </div>
             : 
             <div className='h-full pr-5 flex flex-col relative'>
-                <div className='flex flex-none mt-[15px] pl-[30px]'>
+                <div className='flex flex-none mt-[15px] m550:pl-[15px] pl-[30px]'>
                     <div className='flex w-full p-px bg-black rounded-secondary items-center'>
                         <input value={allFriendsSearchValue} onChange={handleSearch} autoComplete="off" className='w-full text-base leading-8 h-[30px] px-[9px] bg-transparent focus:outline-none text-overlay-text' type="text" name="friendssearch" id="friendssearch" placeholder='Search'/>
                         <div className='w-8 h-8 flex justify-center items-center relative'>
@@ -51,10 +51,10 @@ let clearSearch = () => {
                     </div>
                 </div>
 
-                <div className='mt-6 pl-[30px]'>
+                <div className='mt-6 m550:pl-[15px] pl-[30px]'>
                     <h2 className='text-secondary-gray font-semibold text-xs tracking-[0.02em]'>ALL FRIENDS — {allFriends.length}</h2>
                 </div>
-                <div className='mt-4 h-[90%] mb-3 pb-3 overflow-y-scroll overflow-x-hidden chatbar pl-[30px]'>
+                <div className='mt-4 h-[90%] mb-3 pb-3 overflow-y-scroll overflow-x-hidden chatbar m550:pl-[15px] pl-[30px]'>
                     {allFriends.map(friend => {
                     let photoURL = allUsers.find(item => item.displayName === friend).photoURL
 
@@ -62,7 +62,7 @@ let clearSearch = () => {
                         <div key={crypto.randomUUID()} className='h-[62px] rounded-lg before:w-[calc(100%-20px)] before:h-px before:bg-gray-7 before:absolute before:top-0 flex items-center justify-between relative mt-[-1px] right-[10px] px-[10px] hover:bg-gray-7 group/div cursor-pointer'>
                             <div key={crypto.randomUUID()} className='flex items-center'>
                                 <div key={crypto.randomUUID()} style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})` }} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
-                                <p key={crypto.randomUUID()} className='font-semibold text-white'>{friend}</p>
+                                <p key={crypto.randomUUID()} className='font-semibold text-white text-ellipsis whitespace-nowrap overflow-hidden m400:max-w-[30px] m550:text-xs'>{friend}</p>
                             </div>
 
                             <div key={crypto.randomUUID()} className='flex items-center'>
@@ -80,9 +80,9 @@ let clearSearch = () => {
                     {allFriends.length === 0 ? 
 
                     <div className='h-full flex flex-col items-center justify-center'>
-                        <img className='mb-10' src={`${notfound}`} alt="" />
+                        <img className='mb-10 m900:w-[260px] m900:mb-7 m600:hidden' src={`${notfound}`} alt="" />
                         <div>
-                            <div className='mt-2 text-gray-3'>Wumpus looked, but couldn’t find anyone with that name.</div>
+                            <div className='mt-2 text-gray-3 text-center mx-2'>Wumpus looked, but couldn’t find anyone with that name.</div>
                         </div>
                     </div>
                     

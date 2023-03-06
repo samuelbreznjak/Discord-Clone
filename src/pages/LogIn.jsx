@@ -38,7 +38,7 @@ export default function LogIn() {
             setActiveDiv={setActiveDiv}
         />
 
-        <div className="wrapper select-none">
+        <div className="wrapper select-none invisiblebar">
             <LoginScreen 
                 activeDiv={activeDiv}
                 setLogInputValues={setLogInputValues}

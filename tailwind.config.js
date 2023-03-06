@@ -111,11 +111,13 @@ module.exports = {
       },
 
       gridTemplateColumns: {
-        'dropdowns' : '146px 1fr 1fr',
+        'dropdowns' : '1fr 1fr 1fr',
         'main': '72px auto',
         'dm' : '240px auto',
+        'dm-responsive': '135px auto',
         'message': '41px auto',
         'server': 'auto 240px',
+        'server-responsive': 'auto 150px',
         'loadingDiv': '1fr 1fr'
       },
 
@@ -161,6 +163,21 @@ module.exports = {
         'overlay': 'rgba(0, 0, 0, 0.85)',
         'overlay-text': '#dcddde',
         'overlay-btn-bg': '#303136'
+      },
+
+      screens: {
+        'tall': { 'raw': '(max-height: 620px)' },
+        'regform': { 'raw': '(max-width: 400px)' },
+        'm1000': { 'raw': '(max-width: 1000px)' },
+        'm900': { 'raw': '(max-width: 900px)' },
+        'm850': { 'raw': '(max-width: 850px)' },
+        'm750': { 'raw': '(max-width: 750px)' },
+        'm600': { 'raw': '(max-width: 600px)' },
+        'm550': { 'raw': '(max-width: 550px)' },
+        'm500': { 'raw': '(max-width: 500px)' },
+        'm450': { 'raw': '(max-width: 450px)' },
+        'm400': { 'raw': '(max-width: 400px)' },
+        'm350': { 'raw': '(max-width: 350px)' },
       }
     },
   },

@@ -3,7 +3,7 @@ import User from './User'
 
 export default function ServerLeftSidebar({ activeChannelName, handleChannelButton, myName, myPfp }) {
   return (
-    <div className='bg-gray-4 relative max-h-screen'>
+    <div className='bg-gray-4 relative max-h-screen m550:hidden'>
         <div className='flex items-center font-semibold text-base px-4 py-3 text-white border-b border-black h-[49px]'>
             <p>Server</p>
         </div>

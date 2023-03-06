@@ -6,8 +6,8 @@ export default function User({ myPfp, myName }) {
   return (
     <div className='w-full h-[53px] bg-black-4 text-white flex items-center justify-between px-2'>
         <div className='flex items-center'>
-            <div style={{ backgroundImage: `url(${myPfp})` }} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
-            <p className='font-semibold text-sm'>{myName}</p>
+            <div style={{ backgroundImage: `url(${myPfp})` }} className='w-8 h-8 rounded-full m850:hidden bg-center bg-cover mr-3'></div>
+            <p className='font-semibold overflow-hidden max-w-[120px] m850:max-w-[70px] text-ellipsis whitespace-nowrap text-sm'>{myName}</p>
         </div>
         <button className='group w-8 h-8 rounded hover:bg-gray-7 flex items-center justify-center' onClick={() => {signOut(auth)}}>
             <div className='relative'>

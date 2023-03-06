@@ -32,13 +32,13 @@ let clearSearch = () => {
     <div className='h-full'>
         {initialPendingRequests.length === 0 ? 
             <div className='h-full flex flex-col justify-center items-center'>
-            <img className='mb-12' src={`${pending}`} alt="wumpus" />
-            <p className='text-gray-3'>There are no pending requests. Here's Wumpus for now.</p>
+            <img className='mb-12 m900:w-[260px] m900:mb-6 m600:hidden' src={`${pending}`} alt="wumpus" />
+            <p className='text-gray-3 text-center mx-2'>There are no pending requests. Here's Wumpus for now.</p>
             </div>
             : 
             
             <div className='h-full pr-5 flex flex-col relative'>
-            <div className='flex flex-none mt-[15px] pl-[30px]'>
+            <div className='flex flex-none mt-[15px] pl-[30px] m550:pl-[15px]'>
                 <div className='flex w-full p-px bg-black rounded-secondary items-center'>
                 <input value={pendingSearchValue} onChange={handleSearch} autoComplete="off" className='w-full text-base leading-8 h-[30px] px-[9px] bg-transparent focus:outline-none text-overlay-text' type="text" name="friendssearch" id="pendingsearch" placeholder='Search'/>
                 <div className='w-8 h-8 flex justify-center items-center relative'>
@@ -50,11 +50,11 @@ let clearSearch = () => {
                 </div>
             </div>
 
-            <div className='mt-6 pl-[30px]'>
+            <div className='mt-6 pl-[30px] m550:pl-[15px]'>
                 <h2 className='text-secondary-gray font-semibold text-xs tracking-[0.02em]'>PENDING — {pendingRequests.length}</h2>
             </div>
 
-            <div className='mt-4 h-[90%] mb-3 pb-3 overflow-y-scroll overflow-x-hidden chatbar pl-[30px]'>
+            <div className='mt-4 h-[90%] mb-3 pb-3 overflow-y-scroll overflow-x-hidden chatbar m550:pl-[15px] pl-[30px]'>
                 {pendingRequests.map(request => {
                 let photoURL = allUsers.find(item => item.displayName === request.displayName).photoURL
 
@@ -63,8 +63,8 @@ let clearSearch = () => {
                     <div key={crypto.randomUUID()} className='flex items-center'>
                         <div key={crypto.randomUUID()} style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})` }} className='w-8 h-8 rounded-full bg-center bg-cover mr-3'></div>
                         <div key={crypto.randomUUID()} className='flex flex-col'>
-                        <p key={crypto.randomUUID()} className='font-semibold text-white leading-5'>{request.displayName}</p>
-                        <p key={crypto.randomUUID()} className='font-medium text-xs text-secondary-gray'>{request.incoming ? 'Incoming Friend Request' : 'Outgoing Friend Request'}</p>
+                        <p key={crypto.randomUUID()} className='font-semibold text-white text-ellipsis whitespace-nowrap overflow-hidden m350:max-w-[30px] m550:text-xs leading-5'>{request.displayName}</p>
+                        <p key={crypto.randomUUID()} className='font-medium text-xs m550:text-[10px] m550:hidden text-secondary-gray'>{request.incoming ? 'Incoming Friend Request' : 'Outgoing Friend Request'}</p>
                         </div>
                     </div>
 
@@ -91,9 +91,9 @@ let clearSearch = () => {
                 {pendingRequests.length === 0 ? 
 
                 <div className='h-full flex flex-col items-center justify-center'>
-                    <img className='mb-10' src={`${notfound}`} alt="" />
+                    <img className='mb-10 m900:w-[260px] m900:mb-7 m600:hidden' src={`${notfound}`} alt="" />
                     <div>
-                        <div className='mt-2 text-gray-3'>Wumpus looked, but couldn’t find anyone with that name.</div>
+                        <div className='mt-2 text-gray-3 text-center mx-2'>Wumpus looked, but couldn’t find anyone with that name.</div>
                     </div>
                 </div>
                 

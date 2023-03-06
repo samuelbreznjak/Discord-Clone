@@ -104,30 +104,30 @@ setDmInputValue('');
                     : null}
 
                     {isSameSender && !newDay ? 
-                    <div key={crypto.randomUUID()} className='px-4 py-1 hover:bg-gray-11 group'>
-                    <div key={crypto.randomUUID()} className='grid grid-cols-message gap-4'>
+                    <div key={crypto.randomUUID()} className='px-4 m400:px-2 py-1 hover:bg-gray-11 group'>
+                    <div key={crypto.randomUUID()} className='grid grid-cols-message m400:gap-2 gap-4'>
                         <div key={crypto.randomUUID()}>
-                        <div key={crypto.randomUUID()} className="text-center text-gray-14 text-[11px] font-medium tracking-tighter flex items-center justify-center">
-                            <p className='leading-[22px] hidden group-hover:inline'>{formattedTime}</p>
-                        </div>
+                            <div key={crypto.randomUUID()} className="text-center text-gray-14 m400:text-[10px] text-[11px] font-medium tracking-tighter flex items-center justify-center">
+                                <p className='leading-[22px] hidden group-hover:inline'>{formattedTime}</p>
+                            </div>
                         </div>
                         <div key={crypto.randomUUID()} className='flex flex-col'>
-                        <p key={crypto.randomUUID()} className='leading-[22px]'>{message.text}</p>
+                        <p key={crypto.randomUUID()} className='leading-[22px] break-words'>{message.text}</p>
                         </div>
                     </div>
                     </div>
                     :
-                    <div key={crypto.randomUUID()} className='px-4 mt-[17px] py-1 hover:bg-gray-11'>
-                    <div key={crypto.randomUUID()} className='grid grid-cols-message gap-4 relative'>
+                    <div key={crypto.randomUUID()} className='px-4 m400:px-2 mt-[17px] py-1 hover:bg-gray-11'>
+                    <div key={crypto.randomUUID()} className='grid grid-cols-message m400:gap-2 gap-4 relative'>
                         <button key={crypto.randomUUID()} className='pt-1 btn msgbtn h-max'>
                         <div key={crypto.randomUUID()} style={{ backgroundImage: `url(${photoURL === 'default' ? defaultpfp : photoURL})` }} className='bg-center msgbtn btn bg-cover h-10 rounded-full'></div>
                         </button>
                         <div key={crypto.randomUUID()} className='flex flex-col min-h-[44px]'>
                         <div className='flex items-center'>
                             <button key={crypto.randomUUID()} className='btn msgbtn font-medium leading-[22px] mr-1.5 text-white w-min'>{message.displayName}</button>
-                            <p className='font-medium text-xs text-gray-14 leading-[22px]'>{firstMessageDate}</p>
+                            <p className='font-medium text-xs m400:text-[10px] text-gray-14 leading-[22px]'>{firstMessageDate}</p>
                         </div>
-                        <p key={crypto.randomUUID()} className='leading-[22px]'>{message.text}</p>
+                        <p key={crypto.randomUUID()} className='leading-[22px] break-words'>{message.text}</p>
                         </div>
                     </div>
                     </div>
